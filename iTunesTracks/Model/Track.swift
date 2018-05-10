@@ -18,7 +18,7 @@ class Track: NSObject {
 
     init(with dictionary: Dictionary<String, Any>)
     {
-        self.imageURL = dictionary["artworkUrl60"] as! String
+        self.imageURL = dictionary["artworkUrl30"] as! String
         self.title = dictionary["trackName"] as! String
         self.contentType = dictionary["kind"] as! String
         self.currency = dictionary["currency"] as! String
