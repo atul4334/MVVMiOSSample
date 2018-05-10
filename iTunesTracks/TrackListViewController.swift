@@ -53,6 +53,9 @@ class TrackListViewController: UIViewController {
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(refreshTrackList(_:)), for: .valueChanged)
         
+        self.tableView.estimatedRowHeight = 150
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
     }
 
     @objc private func refreshTrackList(_ sender: Any) {
