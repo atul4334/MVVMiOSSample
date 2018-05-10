@@ -18,7 +18,7 @@ class ApiService: NSObject {
     
     let baseURL = "https://itunes.apple.com/"
     
-    func getTrackList(onSuccess: @escaping(Dictionary<String, Any>) -> Void, onFailure: @escaping(Error) -> Void){
+    func getTrackList(onSuccess: @escaping((Array<Any>) -> Void), onFailure: @escaping(Error) -> Void){
         
         let trackListURL = baseURL + "search?term=jack+johnson"
 
@@ -42,7 +42,7 @@ class ApiService: NSObject {
                     onFailure(error!)
                     return
                 }
-                onSuccess(responseDictionary!["results"] as! Dictionary<String, Any>)
+                onSuccess(responseDictionary!["results"] as! Array<Any>)
             }
         })
         task.resume()
