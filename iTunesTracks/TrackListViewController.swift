@@ -89,6 +89,10 @@ extension TrackListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.labelCountry.text = cellViewModel.countryText
         
         cell.imageViewTrack.sd_setImage(with: URL(string: cellViewModel.imageURL)! )
+        
+        cell.imageViewTrack.layer.cornerRadius = cell.imageViewTrack.frame.width/8.0
+        cell.imageViewTrack.clipsToBounds = true
+        
         return cell
     }
 }
