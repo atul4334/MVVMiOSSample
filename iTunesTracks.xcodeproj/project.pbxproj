@@ -16,7 +16,8 @@
 		B79A71FB20A3E40800185CF5 /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79A71FA20A3E40800185CF5 /* TrackListViewModel.swift */; };
 		B79A71FD20A3E4AA00185CF5 /* TrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79A71FC20A3E4AA00185CF5 /* TrackCellViewModel.swift */; };
 		B79A71FF20A3F5A300185CF5 /* TrackListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79A71FE20A3F5A300185CF5 /* TrackListTableViewCell.swift */; };
-		B79A720220A3FF1600185CF5 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79A720120A3FF1600185CF5 /* RestApiManager.swift */; };
+		B79A720220A3FF1600185CF5 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79A720120A3FF1600185CF5 /* ApiService.swift */; };
+		CAA4B2ED20A4297A00975D42 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4B2EC20A4297A00975D42 /* Track.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +44,8 @@
 		B79A71FA20A3E40800185CF5 /* TrackListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
 		B79A71FC20A3E4AA00185CF5 /* TrackCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCellViewModel.swift; sourceTree = "<group>"; };
 		B79A71FE20A3F5A300185CF5 /* TrackListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListTableViewCell.swift; sourceTree = "<group>"; };
-		B79A720120A3FF1600185CF5 /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
+		B79A720120A3FF1600185CF5 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		CAA4B2EC20A4297A00975D42 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +87,8 @@
 		B79A71D620A3E24800185CF5 /* iTunesTracks */ = {
 			isa = PBXGroup;
 			children = (
+				CAA4B2EB20A4296A00975D42 /* Model */,
 				B79A720020A3FEC900185CF5 /* Service */,
-				B79A71F720A3E37300185CF5 /* Model */,
 				B79A71F920A3E37D00185CF5 /* ViewModel */,
 				B79A71F820A3E37300185CF5 /* View */,
 				B79A71D720A3E24800185CF5 /* AppDelegate.swift */,
@@ -105,13 +107,6 @@
 				B79A71EE20A3E24800185CF5 /* Info.plist */,
 			);
 			path = iTunesTracksTests;
-			sourceTree = "<group>";
-		};
-		B79A71F720A3E37300185CF5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		B79A71F820A3E37300185CF5 /* View */ = {
@@ -135,9 +130,17 @@
 		B79A720020A3FEC900185CF5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				B79A720120A3FF1600185CF5 /* RestApiManager.swift */,
+				B79A720120A3FF1600185CF5 /* ApiService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		CAA4B2EB20A4296A00975D42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAA4B2EC20A4297A00975D42 /* Track.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,10 +248,11 @@
 			files = (
 				B79A71FD20A3E4AA00185CF5 /* TrackCellViewModel.swift in Sources */,
 				B79A71DA20A3E24800185CF5 /* TrackListViewController.swift in Sources */,
-				B79A720220A3FF1600185CF5 /* RestApiManager.swift in Sources */,
+				B79A720220A3FF1600185CF5 /* ApiService.swift in Sources */,
 				B79A71FB20A3E40800185CF5 /* TrackListViewModel.swift in Sources */,
 				B79A71D820A3E24800185CF5 /* AppDelegate.swift in Sources */,
 				B79A71FF20A3F5A300185CF5 /* TrackListTableViewCell.swift in Sources */,
+				CAA4B2ED20A4297A00975D42 /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +460,7 @@
 				B79A71F320A3E24800185CF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B79A71F420A3E24800185CF5 /* Build configuration list for PBXNativeTarget "iTunesTracksTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +469,7 @@
 				B79A71F620A3E24800185CF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

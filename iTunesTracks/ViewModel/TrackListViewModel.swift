@@ -12,6 +12,17 @@ class TrackListViewModel: NSObject {
     
     var updateLoadingStatus:(() -> ())?
     var reloadTableViewClosure:(() -> ())?
+    var tracksArray: Array<Track> = []
+
+    override init() {
+        super.init()
+        
+        self.getTrackList()
+    }
+    
+    func getTrackList(){
+        ApiService.sharedInstane.getTrackList(onSuccess: handleSuccessResponse, onFailure: handleFailureResponse)
+    }
     
     private var cellViewModels:[TrackCellViewModel] = [TrackCellViewModel](){
         didSet {
@@ -34,5 +45,33 @@ class TrackListViewModel: NSObject {
         }
     }
     
+    lazy var handleSuccessResponse: (_ responseArray: Array<Any>) -> Void =  {
+         [weak self] responseArray in
+        
+        for dictionary in responseArray
+        {
+            let track: Track = Track (with: dictionary as! Dictionary<String, Any>)
+            self?.tracksArray.append(track)
+        }
+        
+        self?.cellViewModels = (self?.createCellModelsFromTracksArray())!
+
+        self?.isLoading = false
+    }
     
+    lazy var handleFailureResponse: (_ response: Error) -> Void =  {[weak self] _ in
+        
+        self?.isLoading = false
+    }
+
+    private func createCellModelsFromTracksArray() -> [TrackCellViewModel]
+    {
+        var trackCellViewModelArray:[TrackCellViewModel] = []
+        for track in self.tracksArray
+        {
+            trackCellViewModelArray.append(TrackCellViewModel.init(track: track))
+        }
+        
+        return trackCellViewModelArray
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import SDWebImage
 
 class TrackListViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class TrackListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel: TrackListViewModel!
 
+    private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -29,6 +31,7 @@ class TrackListViewController: UIViewController {
                 else{
                     self?.activityIndicator.stopAnimating()
                     self?.tableView.alpha = 1.0
+                    self?.refreshControl.endRefreshing()
                 }
             }
             
@@ -40,8 +43,25 @@ class TrackListViewController: UIViewController {
             }
         }
         
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(refreshTrackList(_:)), for: .valueChanged)
+        
+        self.tableView.estimatedRowHeight = 150
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
     }
 
+    @objc private func refreshTrackList(_ sender: Any) {
+        // Fetch track data
+        viewModel.getTrackList()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
