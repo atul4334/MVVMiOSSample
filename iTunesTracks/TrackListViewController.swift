@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import SDWebImage
 
 class TrackListViewController: UIViewController {
     
@@ -89,6 +88,7 @@ extension TrackListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.labelCurrency.text = cellViewModel.currencyText
         cell.labelCountry.text = cellViewModel.countryText
         
+        cell.imageViewTrack.sd_setImage(with: URL(string: cellViewModel.imageURL)! )
         return cell
     }
 }
