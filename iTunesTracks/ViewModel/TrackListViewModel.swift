@@ -20,7 +20,7 @@ class TrackListViewModel: NSObject {
         self.getTrackList()
     }
     
-    private func getTrackList(){
+    func getTrackList(){
         ApiService.sharedInstane.getTrackList(onSuccess: handleSuccessResponse, onFailure: handleFailureResponse)
     }
     
