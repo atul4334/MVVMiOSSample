@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="elf-fu-1mH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCellIdentifier" rowHeight="156" id="nfy-VZ-8PX" customClass="TrackListTableViewCell" customModule="iTunesTracks" customModuleProvider="target">
@@ -124,7 +124,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="elf-fu-1mH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="6ea-4j-jfA"/>
+                            <constraint firstItem="elf-fu-1mH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6ea-4j-jfA"/>
                             <constraint firstItem="6kS-31-6Sq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Fz-AC-IIO"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="elf-fu-1mH" secondAttribute="bottom" id="LDZ-Ud-Mf0"/>
                             <constraint firstAttribute="trailing" secondItem="elf-fu-1mH" secondAttribute="trailing" id="ZPI-e8-nqj"/>
