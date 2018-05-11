@@ -54,6 +54,8 @@ class TrackListViewModel: NSObject {
             self?.tracksArray.append(track)
         }
         
+        //Sort by date - descending
+        self?.tracksArray.sort(by: { $0.releaseDate.compare($1.releaseDate) == .orderedDescending})
         self?.cellViewModels = (self?.createCellModelsFromTracksArray())!
 
         self?.isLoading = false

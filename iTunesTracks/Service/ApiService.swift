@@ -38,6 +38,9 @@ class ApiService: NSObject {
                 // Data to Dictionary
                 do {
                     responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? Dictionary
+                    
+                    print("response \(responseDictionary)")
+                    
                 } catch let parseError as Error {
                     onFailure(error!)
                     return

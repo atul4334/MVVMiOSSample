@@ -15,6 +15,7 @@ class Track: NSObject {
     var contentType: String = ""
     var currency: String = ""
     var country: String = ""
+    var releaseDate: Date
 
     init(with dictionary: Dictionary<String, Any>)
     {
@@ -23,7 +24,14 @@ class Track: NSObject {
         self.contentType = dictionary["kind"] as! String
         self.currency = dictionary["currency"] as! String
         self.country = dictionary["country"] as! String
-
+        let dateString: String = dictionary["releaseDate"] as! String
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+        let date = dateFormatter.date(from: dateString)!
+        releaseDate = date
+        
         super.init()
         
     }
