@@ -10,11 +10,13 @@ import UIKit
 
 class TrackListTableViewCell: UITableViewCell {
 
+    ///Outlets
     @IBOutlet weak var imageViewTrack: UIImageView!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelType: UILabel!
     @IBOutlet weak var labelCurrency: UILabel!
     @IBOutlet weak var labelCountry: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
