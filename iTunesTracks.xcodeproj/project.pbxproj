@@ -159,9 +159,9 @@
 		B79A71CB20A3E24800185CF5 = {
 			isa = PBXGroup;
 			children = (
-				B70E8BD920A4BCD8002584C8 /* SDWebImage */,
 				B70E8BD820A4B7E5002584C8 /* iTunesTrack-Bridging-Header.h */,
 				B79A71D620A3E24800185CF5 /* iTunesTracks */,
+				B70E8BD920A4BCD8002584C8 /* SDWebImage */,
 				B79A71EB20A3E24800185CF5 /* iTunesTracksTests */,
 				B79A71D520A3E24800185CF5 /* Products */,
 			);
