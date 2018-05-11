@@ -9,11 +9,12 @@
 import UIKit
 
 class TrackCellViewModel: NSObject {
-    let imageURL: String
-    let titleText: String
-    let contentTypeText: String
-    let currencyText: String
-    let countryText: String
+    //In View Model properties are implicitly unwrapped, the value assignment is handled in model itself
+    let imageURL: String!
+    let titleText: String!
+    let contentTypeText: String!
+    let currencyText: String!
+    let countryText: String!
     
     init(track: Track) {
         self.imageURL = track.imageURL

@@ -8,15 +8,19 @@
 
 import UIKit
 
-class TrackListViewModel: NSObject {
+class TrackListViewModel: NSObject, ApiServiceProtocol {
     
+    //Closure Variables
     var updateLoadingStatus:(() -> ())?
     var reloadTableViewClosure:(() -> ())?
+    
+    //Array of models
     var tracksArray: Array<Track> = []
 
     override init() {
         super.init()
         
+        //Get Track List
         self.getTrackList()
     }
     
@@ -24,6 +28,8 @@ class TrackListViewModel: NSObject {
         ApiService.sharedInstane.getTrackList(onSuccess: handleSuccessResponse, onFailure: handleFailureResponse)
     }
     
+    // MARK: - Closure Variables
+
     private var cellViewModels:[TrackCellViewModel] = [TrackCellViewModel](){
         didSet {
             self.reloadTableViewClosure?()
@@ -34,17 +40,21 @@ class TrackListViewModel: NSObject {
         return cellViewModels.count
     }
     
-    func getCellViewModel(at indexPath: IndexPath) -> TrackCellViewModel
-    {
-        return cellViewModels[indexPath.row]
-    }
-    
     var isLoading: Bool = false {
         didSet {
             self.updateLoadingStatus?()
         }
     }
+
+    //MARK: - Internal Functions
     
+    func getCellViewModel(at indexPath: IndexPath) -> TrackCellViewModel
+    {
+        return cellViewModels[indexPath.row]
+    }
+    
+    //MARK: - API response
+
     lazy var handleSuccessResponse: (_ responseArray: Array<Any>) -> Void =  {
          [weak self] responseArray in
         
@@ -55,7 +65,7 @@ class TrackListViewModel: NSObject {
         }
         
         //Sort by date - descending
-        self?.tracksArray.sort(by: { $0.releaseDate.compare($1.releaseDate) == .orderedDescending})
+        self?.tracksArray.sort(by: { $0.releaseDate?.compare($1.releaseDate!) == .orderedDescending})
         self?.cellViewModels = (self?.createCellModelsFromTracksArray())!
 
         self?.isLoading = false
@@ -63,12 +73,16 @@ class TrackListViewModel: NSObject {
     
     lazy var handleFailureResponse: (_ response: Error) -> Void =  {[weak self] _ in
         
+        //TODO: Add error alert closure variable and assign it as a view controller blocks like updateLoadingStatus
         self?.isLoading = false
     }
+
+    //MARK: - Create View Models from Models
 
     private func createCellModelsFromTracksArray() -> [TrackCellViewModel]
     {
         var trackCellViewModelArray:[TrackCellViewModel] = []
+        
         for track in self.tracksArray
         {
             trackCellViewModelArray.append(TrackCellViewModel.init(track: track))

@@ -9,8 +9,8 @@
 import Foundation
 
 protocol ApiServiceProtocol: NSObjectProtocol {
-    func onSuccess(response: Dictionary<String, Any>)
-    func onFailure(response: Error)
+    var handleFailureResponse: (_ response: Error) -> Void {get set}
+    var handleSuccessResponse: (_ responseArray: Array<Any>) -> Void {get set}
 }
 
 class ApiService: NSObject {
@@ -32,19 +32,21 @@ class ApiService: NSObject {
             
             var responseDictionary: Dictionary<String, Any>?
             
-            if(error != nil){
-                onFailure(error!)
+            if let error = error {
+                onFailure(error)
             } else{
                 // Data to Dictionary
                 do {
                     responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? Dictionary
                     
-                    print("response \(responseDictionary)")
+                    print("response \(String(describing: responseDictionary))")
                     
-                } catch let parseError as Error {
-                    onFailure(error!)
+                } catch let parseError {
+                    onFailure(parseError)
                     return
                 }
+                
+                //Call handler
                 onSuccess(responseDictionary!["results"] as! Array<Any>)
             }
         })
